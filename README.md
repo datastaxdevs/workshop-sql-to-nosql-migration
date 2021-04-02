@@ -3,7 +3,7 @@
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
 
-![image](images/splash.jpeg?raw=true)
+![image](https://user-images.githubusercontent.com/23346205/113427767-9f824880-93a3-11eb-8461-3689a13882a6.jpeg?raw=true)
 
 This intructions will lead you to step by step operations for the workshop introducing the NoSQL Databases technologies. 
 
