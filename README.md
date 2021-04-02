@@ -5,8 +5,6 @@
 
 ![image](https://user-images.githubusercontent.com/23346205/113427767-9f824880-93a3-11eb-8461-3689a13882a6.jpeg?raw=true)
 
-This intructions will lead you to step by step operations for the workshop introducing the NoSQL Databases technologies. 
-
 ## Materials for the Session
 
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
