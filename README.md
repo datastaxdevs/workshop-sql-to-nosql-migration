@@ -16,65 +16,74 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 ## Table of content
 
-1. [Create Astra Instance](#1-create-astra-instance)
-2. [Tabular Databases](#2-tabular-databases)
+1. [Create your Astra Instance](#1-create-your-astra-instance)
+2. [Create petclinic NoSQL data model](#2-create-petclinic-nosql-data-model)
+3. [Load data into Astra with DSBulk](#3-load-data-into-astra-with-dsbulk)
 
-## 1. Create Astra Instance
+## 1. Create your Astra instance
 
-**`ASTRA`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.
+`ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.
 
-✅ Register (if needed) and Sign In to Astra [https://astra.datastax.com](https://dtsx.io/workshop): You can use your `Github`, `Google` accounts or register with an `email`.
+**✅ Step 1a. Register (if needed) and Sign In to Astra** : You can use your `Github`, `Google` accounts or register with an `email`.
 
-_Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character_
+Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character
 
-✅ Create a "pay as you go" plan
+- [Registration Page](https://dtsx.io/workshop)
 
-Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html), to set up a pay as you go database with a free $25 monthly credit.
+![Registration Image](images/astra-create-register.png?raw=true)
 
-- **Select the pay as you go option**: Includes $25 monthly credit - no credit card needed to set up.
+- [Authentication Page](https://dtsx.io/workshop)
 
-You will find below which values to enter for each field.
+![Login Image](images/astra-create-login.png?raw=true)
 
-- **For the database name** - `sql_to_nosql_db.` While Astra allows you to fill in these fields with values of your own choosing, please follow our recommendations to ensure the application runs properly.
 
-- **For the keyspace name** - `spring_petclinic`. It's really important that you use the name "spring_petclinic" for the code to work.
+**✅ Step 1b. Create a "pay as you go" plan**
 
-_You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
+Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html) and use the values provided below, to set up a pay as you go database with a free $25 monthly credit.
 
-- **For provider and region**: Choose and provider (either GCP or AWS). Region is where your database will reside physically (choose one close to you or your users).
+| Parameter | Value 
+|---|---|
+| Database name | sql_to_nosql_db |
+| Keyspace name | spring_petclinic |
 
-- **Create the database**. Review all the fields to make sure they are as shown, and click the `Create Database` button.
+## 2. Create petclinic NoSQL data model
+Ok, now that you have a database created the next step is to create a table to work with. 
 
-You will see your new database `pending` in the Dashboard.
+**✅ Step 2a. Navigate to the CQL Console and login to the database**
 
-![my-pic](https://github.com/datastaxdevs/shared-assets/blob/master/astra/dashboard-pending-1000-update.png?raw=true)
+In the Summary screen for your database, select **_CQL Console_** from the top menu in the main window. This will take you to the CQL Console and automatically log you in.
 
-The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
-## 2. Tabular databases
+**✅ Step 2b. Describe keyspaces and USE killrvideo**
 
-In a tabular database we will store ... tables ! The Astra Service is based on Apache Cassandra which is tabular it make sense to start by this one.
+Ok, now we're ready to rock. Creating tables is quite easy, but before we create one we need to tell the database which keyspace we are working with.
 
-> **Tabular databases** organize data in rows and columns, but with a twist from the traditional RDBMS. Also known as wide-column stores or partitioned row stores, they provide the option to organize related rows in partitions that are stored together on the same replicas to allow fast queries. Unlike RDBMSs, the tabular format is not necessarily strict. For example, Apache Cassandra™ does not require all rows to contain values for all columns in the table. Like Key/Value and Document databases, Tabular databases use hashing to retrieve rows from the table. Examples include: Cassandra, HBase, and Google Bigtable.
+First, let's **_DESCRIBE_** all of the keyspaces that are in the database. This will give us a list of the available keyspaces.
 
-**✅ 2a. Describe your Keyspace**
+📘 **Command to execute**
+```
+desc KEYSPACES;
+```
+_"desc" is short for "describe", either is valid_
 
-At Database creation you provided a keyspace, a logical grouping for tables let's visualize it. In Astra go to CQL Console to enter the following commands
+📗 **Expected output**
 
-- *Select your db*
-![image](images/01.png?raw=true)
+<img width="1000" alt="Screenshot 2020-09-30 at 13 54 55" src="https://user-images.githubusercontent.com/20337262/94687725-8cbf8600-0324-11eb-83b0-fbd3d7fbdadc.png">
 
-- *Select CqlConsole*
-![image](images/02.png?raw=true)
+Depending on your setup you might see a different set of keyspaces then in the image. The one we care about for now is **_spring_petclinic_**. From here, execute the **_USE_** command with the **_spring_petclinic_** keyspace to tell the database our context is within **_spring_petclinic_**.
 
-- *Enter the command*
-```sql
-describe keyspaces;
+📘 **Command to execute**
+```
+use spring_petclinic;
 ```
 
-![image](images/03.png?raw=true)
+📗 **Expected output**
 
-**✅ 2b. Create tables**
+<img width="1000" alt="Screenshot 2020-09-30 at 13 55 56" src="https://user-images.githubusercontent.com/20337262/94687832-b082cc00-0324-11eb-885a-d44e127cf9be.png">
+
+Notice how the prompt displays ```KVUser@cqlsh:spring_petclinic>``` informing us we are **using** the **_spring_petclinic_** keyspace. Now we are ready to create our table.
+
+**✅ 2c. Create tables**
 
 - *Execute the following Cassandra Query Language* 
 
