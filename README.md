@@ -18,7 +18,8 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 1. [Create your Astra Instance](#1-create-your-astra-instance)
 2. [Create petclinic NoSQL data model](#2-create-petclinic-nosql-data-model)
-3. [Load data into Astra with DSBulk](#3-load-data-into-astra-with-dsbulk)
+3. [Generate your Astra application token](#3-generate-your-astra-application-token)
+4. [Load data into Astra with DSBulk](#4-load-data-into-astra-with-dsbulk)
 
 ## 1. Create your Astra instance
 
@@ -177,21 +178,47 @@ describe keyspace spring_petclinic;
 
 [🏠 Back to Table of Contents](#table-of-content)
 
-## 3. Transform and load data with DSBulk
+## 3. Generate your Astra application token
+In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database.
 
-https://docs.datastax.com/en/astra/docs/loading-and-unloading-data-with-datastax-bulk-loader.html#_prerequisites
+**✅ 3a. Generate your token**
+If you don't already have one follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html#_create_application_token) to generate your new token. **Don't forget to download it once created because you will not be able to see it again** without generating a new one.
+
+Once you download the token if you view the contents they should look something like this:
 
 ```shell
+"Client Id","Client Secret","Token","Role"
+"fdsfdslKFdLFdslDFFDjf","aaaaaaadsdadasdasdasdfsadfldsjfldjdsaldjasljdasljdsaljdasljdasljdlasjdal-FLflirFdfl.lfjdfdsljfjdl+fdlffkdsslfd","AstraCS:ppppdspfdsdslfjsdlfjdlj:540524888-04384039399999999999999999","Admin User"
+```
+
+You'll need to use this in a moment to authenticate with DSBulk so keep it handy.
+
+## 4. Transform and load data with DSBulk
+In order to use DSBulk you need to download and install it. While you can do this locally if you would like following the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/loading-and-unloading-data-with-datastax-bulk-loader.html#_prerequisites) we've already provided it for you using **GitPod**. Click the button below to launch your instance.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
+
+**✅ 4a. Load `owner` table SQL export into `petclinic_owner` NoSQL table**
+**NOTE** both the `<<YOUR CLIENT ID>>` and `<<YOUR CLIENT SECRET>>` values in the command below. You need to **REPLACE** these with your ID and SECRET values. Here is an example.
+
+
 ```shell
-dsbulk load \
--url ../owner.csv \
--b ../creds.zip \
+dsbulk-1.8.0/bin/dsbulk load \
+-url owner.csv \
+-b astra-creds.zip \
+```
+```shell
 -u <<YOUR CLIENT ID>> \
+```
+```shell
 -p <<YOUR CLIENT SECRET>> \
+```
+```shell
 -query "INSERT INTO spring_petclinic.petclinic_owner (first_name, last_name, address, city, telephone, id) VALUES (:first_name,:last_name,:address,:city,:telephone,UUID())" \
 -header true \
 -delim ';'
 ```
+_An example of how to construct the above DSBulk command can be found [**HERE**](https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/dsbulkLoad.html)._
 
 ## THE END
 
