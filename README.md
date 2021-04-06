@@ -166,6 +166,22 @@ describe keyspace spring_petclinic;
 
 [🏠 Back to Table of Contents](#table-of-content)
 
+## 3. Transform and load data with DSBulk
+
+https://docs.datastax.com/en/astra/docs/loading-and-unloading-data-with-datastax-bulk-loader.html#_prerequisites
+
+```shell
+```shell
+dsbulk load \
+-url ../owner.csv \
+-b ../creds.zip \
+-u <<YOUR CLIENT ID>> \
+-p <<YOUR CLIENT SECRET>> \
+-query "INSERT INTO spring_petclinic.petclinic_owner (first_name, last_name, address, city, telephone, id) VALUES (:first_name,:last_name,:address,:city,:telephone,UUID())" \
+-header true \
+-delim ';'
+```
+
 ## THE END
 
 Congratulation your made it to the END.
