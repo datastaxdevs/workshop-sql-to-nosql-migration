@@ -1,0 +1,23 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: sql-to-nosql-workshop
+    init: |
+      cd /workspace/workshop-sql-to-nosql-migration
+      wget https://downloads.datastax.com/dsbulk/dsbulk-1.8.0.tar.gz
+      tar -xvf dsbulk-1.8.0.tar.gz
+    command: |
+      cd /workspace/workshop-sql-to-nosql-migration
+      echo "sql-to-nosql-workshop gitpod ready"
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: false
