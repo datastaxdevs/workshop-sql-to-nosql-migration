@@ -30,16 +30,16 @@ Make sure to chose a password with minimum 8 characters, containing upper and lo
 
 - [Registration Page](https://dtsx.io/workshop)
 
-![Registration Image](images/astra-create-register.png?raw=true)
+![Registration Image](https://user-images.githubusercontent.com/23346205/113758960-84387580-96e2-11eb-96dc-27448cf0d55f.png)
 
 - [Authentication Page](https://dtsx.io/workshop)
 
-![Login Image](images/astra-create-login.png?raw=true)
+![Login Image](https://user-images.githubusercontent.com/23346205/113758903-6ec34b80-96e2-11eb-990d-49e8a381cb6d.png)
 
 
 **✅ Step 1b. Create a "pay as you go" plan**
 
-Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html) and use the values provided below, to set up a pay as you go database with a free $25 monthly credit.
+Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html) and use the values provided below, to set up a pay as you go database with a **FREE** $25 monthly credit.
 
 | Parameter | Value 
 |---|---|
@@ -47,7 +47,7 @@ Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-
 | Keyspace name | spring_petclinic |
 
 ## 2. Create petclinic NoSQL data model
-Ok, now that you have a database created the next step is to create a table to work with. 
+Ok, now that you have a database created the next step is to create a tables to work with.
 
 **✅ Step 2a. Navigate to the CQL Console and login to the database**
 
@@ -68,7 +68,7 @@ _"desc" is short for "describe", either is valid_
 
 📗 **Expected output**
 
-<img width="1000" alt="Screenshot 2020-09-30 at 13 54 55" src="https://user-images.githubusercontent.com/20337262/94687725-8cbf8600-0324-11eb-83b0-fbd3d7fbdadc.png">
+![Screen Shot 2021-04-06 at 2 11 09 PM](https://user-images.githubusercontent.com/23346205/113758501-f5c3f400-96e1-11eb-8f40-4eb2c9b8c2c4.png)
 
 Depending on your setup you might see a different set of keyspaces then in the image. The one we care about for now is **_spring_petclinic_**. From here, execute the **_USE_** command with the **_spring_petclinic_** keyspace to tell the database our context is within **_spring_petclinic_**.
 
@@ -79,9 +79,9 @@ use spring_petclinic;
 
 📗 **Expected output**
 
-<img width="1000" alt="Screenshot 2020-09-30 at 13 55 56" src="https://user-images.githubusercontent.com/20337262/94687832-b082cc00-0324-11eb-885a-d44e127cf9be.png">
+![Screen Shot 2021-04-06 at 2 12 24 PM](https://user-images.githubusercontent.com/23346205/113758637-2015b180-96e2-11eb-85f0-a53c9a6a604a.png)
 
-Notice how the prompt displays ```KVUser@cqlsh:spring_petclinic>``` informing us we are **using** the **_spring_petclinic_** keyspace. Now we are ready to create our table.
+Notice how the prompt displays ```token@cqlsh:spring_petclinic>``` informing us we are **using** the **_spring_petclinic_** keyspace. Now we are ready to create our tables.
 
 **✅ 2c. Create tables**
 
