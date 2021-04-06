@@ -7,6 +7,7 @@ tasks:
     command: |
       cd /workspace/workshop-sql-to-nosql-migration
       echo "sql-to-nosql-workshop gitpod ready"
+      . setup.sh
 
 github:
   prebuilds:
