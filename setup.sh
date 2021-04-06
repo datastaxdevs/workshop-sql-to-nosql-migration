@@ -1,9 +1,9 @@
-echo "🚀   Go to https://astra.datastax.com/org/?create_service_account
+echo "🚀    Go to https://astra.datastax.com/org/?create_service_account
 If you have not created a service account for your org click Actions -> Add Service Account. Then, click the copy icon and paste your service account credentials here: "
   read -r SERVICE_ACCOUNT
   export SERVICE_ACCOUNT="${SERVICE_ACCOUNT}"
 
-echo "🚀  Now, paste your database ID here: "
+echo "🚀   Now, paste your database ID here: "
   read -r DB_ID
   export DB_ID="${DB_ID}"
 
@@ -18,8 +18,6 @@ DBbyID=$(curl -s --request GET \
   --url "https://api.astra.datastax.com/v2/databases/${DB_ID}?include=nonterminated&provider=all&limit=25" \
   --header "authorization: Bearer ${DEVOPS_TOKEN}" \
   --header 'content-type: application/json')
-
-echo $DBbyID
 
 FIRST_DB_SECURE_BUNDLE_URL=$(echo "${DBbyID}" | jq -c '.info.datacenters[0].secureBundleUrl')
 echo $FIRST_DB_SECURE_BUNDLE_URL
