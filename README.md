@@ -22,7 +22,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 ## 1. Create your Astra instance
 
-`ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.
+`ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. **No credit card or any payment required**, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - **sufficient to run small production workloads**.
 
 **✅ Step 1a. Register (if needed) and Sign In to Astra** : You can use your `Github`, `Google` accounts or register with an `email`.
 
@@ -70,7 +70,9 @@ _"desc" is short for "describe", either is valid_
 
 ![Screen Shot 2021-04-06 at 2 11 09 PM](https://user-images.githubusercontent.com/23346205/113758501-f5c3f400-96e1-11eb-8f40-4eb2c9b8c2c4.png)
 
-Depending on your setup you might see a different set of keyspaces then in the image. The one we care about for now is **_spring_petclinic_**. From here, execute the **_USE_** command with the **_spring_petclinic_** keyspace to tell the database our context is within **_spring_petclinic_**.
+Depending on your setup you might see a different set of keyspaces then in the image. The one we care about for now is **_spring_petclinic_**. 
+
+From here, execute the **_USE_** command with the **_spring_petclinic_** keyspace to tell the database our context is within **_spring_petclinic_**.
 
 📘 **Command to execute**
 ```
