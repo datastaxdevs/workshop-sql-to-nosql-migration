@@ -201,7 +201,7 @@ You'll need to use this in a moment to authenticate with DSBulk so **keep it han
 ## 4. Transform and load data with DSBulk
 In order to use DSBulk you need to download and install it. While you can do this locally if you would like following the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/loading-and-unloading-data-with-datastax-bulk-loader.html#_prerequisites) we've already provided it for you using **GitPod**. Click the button below to launch your instance.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
+[![Open in Gitpod](https://img.shields.io/badge/Gitpod-Open--in--Gitpod-blue?logo=gitpod)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
 
 ### ✅ 4a. Load `owner` table SQL export into `petclinic_owner` NoSQL table
 Ok, we're going to use DSBulk in this section to: 
