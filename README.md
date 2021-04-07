@@ -19,7 +19,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 1. [Create your Astra Instance](#1-create-your-astra-instance)
 2. [Create petclinic NoSQL data model](#2-create-petclinic-nosql-data-model)
 3. [Generate your Astra application token](#3-generate-your-astra-application-token)
-4. [Load data into Astra with DSBulk](#4-load-data-into-astra-with-dsbulk)
+4. [Load data into Astra with DSBulk](#4-transform-and-load-data-with-dsbulk)
 
 ## 1. Create your Astra instance
 
