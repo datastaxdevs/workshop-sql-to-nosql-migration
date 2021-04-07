@@ -25,7 +25,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 `ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. **No credit card or any payment required**, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - **sufficient to run small production workloads**.
 
-**✅ Step 1a. Register (if needed) and Sign In to Astra** : You can use your `Github`, `Google` accounts or register with an `email`.
+### ✅ Step 1a. Register (if needed) and Sign In to Astra** : You can use your `Github`, `Google` accounts or register with an `email`.
 
 Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character
 
@@ -38,7 +38,7 @@ Make sure to chose a password with minimum 8 characters, containing upper and lo
 ![Login Image](https://user-images.githubusercontent.com/23346205/113758903-6ec34b80-96e2-11eb-990d-49e8a381cb6d.png)
 
 
-**✅ Step 1b. Create a "pay as you go" plan**
+### ✅ Step 1b. Create a "pay as you go" plan
 
 Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html) and use the values provided below, to set up a pay as you go database with a **FREE** $25 monthly credit.
 
@@ -50,12 +50,12 @@ Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-
 ## 2. Create petclinic NoSQL data model
 Ok, now that you have a database created the next step is to create a tables to work with.
 
-**✅ Step 2a. Navigate to the CQL Console and login to the database**
+### ✅ Step 2a. Navigate to the CQL Console and login to the database
 
 In the Summary screen for your database, select **_CQL Console_** from the top menu in the main window. This will take you to the CQL Console and automatically log you in.
 
 
-**✅ Step 2b. Describe keyspaces and USE killrvideo**
+### ✅ Step 2b. Describe keyspaces and USE killrvideo
 
 Ok, now we're ready to rock. Creating tables is quite easy, but before we create one we need to tell the database which keyspace we are working with.
 
@@ -86,9 +86,11 @@ use spring_petclinic;
 
 Notice how the prompt displays ```token@cqlsh:spring_petclinic>``` informing us we are **using** the **_spring_petclinic_** keyspace. Now we are ready to create our tables.
 
-**✅ 2c. Create tables**
+### ✅ 2c. Create tables
 
-- *Execute the following Cassandra Query Language* 
+- *Execute the following Cassandra Query Language. Copy and paste the following statements into your CQL Console* 
+
+📘 **Command to execute**
 
 ```sql
 use spring_petclinic;
@@ -176,49 +178,58 @@ VALUES ('pet_type ', {'bird', 'cat', 'dog', 'lizard','hamster','snake'});
 describe keyspace spring_petclinic;
 ```
 
+📗 **Expected output**
+
+
 [🏠 Back to Table of Contents](#table-of-content)
 
 ## 3. Generate your Astra application token
 In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database.
 
-**✅ 3a. Generate your token**
+### ✅ 3a. Generate your token
 If you don't already have one follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html#_create_application_token) to generate your new token. **Don't forget to download it once created because you will not be able to see it again** without generating a new one.
 
-Once you download the token if you view the contents they should look something like this:
+Once you **DOWNLOAD** the token if you view the contents they should look something like this:
 
 ```shell
 "Client Id","Client Secret","Token","Role"
 "fdsfdslKFdLFdslDFFDjf","aaaaaaadsdadasdasdasdfsadfldsjfldjdsaldjasljdasljdsaljdasljdasljdlasjdal-FLflirFdfl.lfjdfdsljfjdl+fdlffkdsslfd","AstraCS:ppppdspfdsdslfjsdlfjdlj:540524888-04384039399999999999999999","Admin User"
 ```
 
-You'll need to use this in a moment to authenticate with DSBulk so keep it handy.
+You'll need to use this in a moment to authenticate with DSBulk so **keep it handy**.
 
 ## 4. Transform and load data with DSBulk
 In order to use DSBulk you need to download and install it. While you can do this locally if you would like following the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/loading-and-unloading-data-with-datastax-bulk-loader.html#_prerequisites) we've already provided it for you using **GitPod**. Click the button below to launch your instance.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
 
-**✅ 4a. Load `owner` table SQL export into `petclinic_owner` NoSQL table**
-**NOTE** both the `<<YOUR CLIENT ID>>` and `<<YOUR CLIENT SECRET>>` values in the command below. You need to **REPLACE** these with your ID and SECRET values. Here is an example.
+### ✅ 4a. Load `owner` table SQL export into `petclinic_owner` NoSQL table
+Ok, we're going to use DSBulk in this section to: 
+- connect to our Astra database using the **CLIENT ID** and **CLIENT SECRET** we created earlier in step 3 and the secure connect bundle `astra-creds.zip`
+- load data from the owner.csv file (exported from our relational DB `owner` table)
+- do this using a regular **INSERT** statement that maps values from our CSV file while **transforming** data with `UUID()`
+- use CSV file headers to identify what data each delimited column contains
+- and finally set our delimiter to use ";"
 
+Once this command is constructed it should look something like this:
+<img width="1184" alt="Screen Shot 2021-04-07 at 8 05 22 AM" src="https://user-images.githubusercontent.com/23346205/113863760-0d4dbc00-9778-11eb-95cb-ffdb9742525d.png">
 
-```shell
-dsbulk-1.8.0/bin/dsbulk load \
--url owner.csv \
--b astra-creds.zip \
-```
-```shell
--u <<YOUR CLIENT ID>> \
-```
-```shell
--p <<YOUR CLIENT SECRET>> \
-```
-```shell
--query "INSERT INTO spring_petclinic.petclinic_owner (first_name, last_name, address, city, telephone, id) VALUES (:first_name,:last_name,:address,:city,:telephone,UUID())" \
--header true \
--delim ';'
-```
 _An example of how to construct the above DSBulk command can be found [**HERE**](https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/dsbulkLoad.html)._
+
+We've made this a little easier by constructing the command for you. Just run the `dsbulk.sh` script. This will ask for the **CLIENT ID** and **CLIENT SECRET** you created earlier. When it asks, just paste in your value and hit **`ENTER`** to go to the next step.
+
+📘 **Command to execute**
+```shell
+./dsbulk.sh
+```
+
+📗 **Expected output**
+
+### ✅ 4b. Let's break this down a bit**
+So great, you just ran the DSBulk command and something happened, but lets explain this a bit more.
+
+First thing, here is the source CSV we are using generated from our SQL relational database for the `owner` table.
+<img width="636" alt="Screen Shot 2021-04-07 at 8 11 49 AM" src="https://user-images.githubusercontent.com/23346205/113864466-eba10480-9778-11eb-9324-1fe57aedbc9d.png">
 
 ## THE END
 
