@@ -4,7 +4,7 @@ tasks:
       cd /workspace/workshop-sql-to-nosql-migration
       wget https://downloads.datastax.com/dsbulk/dsbulk-1.8.0.tar.gz
       tar -xvf dsbulk-1.8.0.tar.gz
-      pip install httpie
+      pip install httpie-astra
     command: |
       cd /workspace/workshop-sql-to-nosql-migration
       echo "sql-to-nosql-workshop gitpod ready"
