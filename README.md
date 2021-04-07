@@ -14,6 +14,18 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 - [Discord chat](https://bit.ly/cassandra-workshop)
 - [Questions and Answers](https://community.datastax.com/)
 
+## Homework
+
+Don't forget to complete your upgrade and get your verified skill badge! Finish and submit your homework!
+
+![image](https://user-images.githubusercontent.com/1742301/113891771-aeaf2f00-97c5-11eb-844e-c4df5d7c4cc9.png)
+
+1. Complete the practice steps 1-4 from this repository as described below. Make screenshots of the last step (load data with DSBulk)
+2. Complete scenario [Cassandra Data Modeling](https://www.datastax.com/dev/scenario/try-it-out-cassandra-data-modeling) at make a screenshot of the "congratulations" page.
+3. Submit your homework [here](https://github.com/datastaxdevs/workshop-sql-to-nosql-migration/issues/new?assignees=HadesArchitect&labels=homework%2C+pending&template=homework-assignment.md&title=%5BHW%5D+%3CNAME%3E)
+
+That's it, you are done! Expect an email next week!
+
 ## Table of content
 
 1. [Create your Astra Instance](#1-create-your-astra-instance)
