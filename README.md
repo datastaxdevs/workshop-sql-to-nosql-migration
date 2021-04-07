@@ -274,7 +274,7 @@ SELECT * FROM petclinic_owner;
 📗 **Expected output**
 ![Screen Shot 2021-04-07 at 8 37 54 AM](https://user-images.githubusercontent.com/23346205/113867461-91a23e00-977c-11eb-93b9-0da86fe7e2d7.png)
 
-
+Awesome! You now have data in your new NoSQL table.
 
 ### ✅ 4b. Let's break this down a bit
 So great, you just ran the DSBulk command and something happened, but lets explain this a bit more.
@@ -282,8 +282,26 @@ So great, you just ran the DSBulk command and something happened, but lets expla
 First thing, here is the source CSV we are using generated from our SQL relational database for the `owner` table.
 <img width="636" alt="Screen Shot 2021-04-07 at 8 11 49 AM" src="https://user-images.githubusercontent.com/23346205/113864466-eba10480-9778-11eb-9324-1fe57aedbc9d.png">
 
+If you remember from our discussion and the [**slide deck**](./slides.pdf) when moving into something like Cassandra we don't tend to use INTegers for IDs. We use UUIDs instead. This is to ensure IDs are truly unique when using a distributed system. With that, we need to transform the INT based IDs from the SQL data to UUIDs. We do this by using the `**UUID()**` function in our **INSERT** statement.
+
+<img width="855" alt="Screen Shot 2021-04-07 at 9 37 31 AM" src="https://user-images.githubusercontent.com/23346205/113875678-02e5ef00-9785-11eb-9a51-8666cb9bb885.png">
+
+This will generate UUIDs for us as data is inserted into our new Cassandra table.
+
+Also, notice the header line in our CSV.
+
+<img width="503" alt="Screen Shot 2021-04-07 at 9 44 17 AM" src="https://user-images.githubusercontent.com/23346205/113876552-d7173900-9785-11eb-8745-dad34f18740c.png">
+
+If you look back to the **INSERT** statement we used you may have noticed something like 
+
+```sql
+VALUES (:first_name,:last_name,:address,:city,:telephone,UUID())
+```
+
+where you see items `:first_name` and `:last_name`. These are bindings. They are binding the values passed into the **INSERT** statement to the each column by the name of the column. You can use this to map values all sorts of ways and this just scratches the surface, but I think you get the idea.
+
 ## THE END
 
-Congratulation your made it to the END.
+Whoohoo! Congrats on making it to the end. While this workshop just touches on this process from a pretty high level hopefully it gives you an idea of the kinds of things you need to do and where to start. To learn more about what you can do with DSBulk take a look at the docs [**HERE**](https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/dsbulkCmd.html). Also, don't forget that you can use Astra to experiment and play around with your data model for **FREE** well within the limits of the $25 monthly credit.
 
 
