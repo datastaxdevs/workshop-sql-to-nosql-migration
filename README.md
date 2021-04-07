@@ -18,7 +18,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 1. [Create your Astra Instance](#1-create-your-astra-instance)
 2. [Create petclinic NoSQL data model](#2-create-petclinic-nosql-data-model)
-3. [Generate your Astra application token](#3-generate-your-astra-application-token)
+3. [Generate your Astra application token and service account](#3-generate-your-astra-application-token-and-service-account)
 4. [Load data into Astra with DSBulk](#4-transform-and-load-data-with-dsbulk)
 
 ## 1. Create your Astra instance
@@ -183,10 +183,15 @@ describe keyspace spring_petclinic;
 
 [🏠 Back to Table of Contents](#table-of-content)
 
-## 3. Generate your Astra application token
-In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database.
+## 3. Generate your Astra application token and service account
+In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database. We'll also create a service account to use the DevOps API.
 
-### ✅ 3a. Generate your token
+### ✅ 3a. Create a service account
+An Astra service account lets you use the DevOps API (Hi Devops folks, this is for you). Why this matters for this workshop is it allows us to very easily pull down your secure connect bundle in an automated fashion using a script.
+
+First things first though, if you haven't already you need to go and create a service account in Astra to enable this. Follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-service-account.html#_create_your_service_account) to create your account.
+
+### ✅ 3b. Generate your application token
 If you don't already have one follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html#_create_application_token) to generate your new token. **Don't forget to download it once created because you will not be able to see it again** without generating a new one.
 
 Once you **DOWNLOAD** the token if you view the contents they should look something like this:
@@ -203,7 +208,38 @@ In order to use DSBulk you need to download and install it. While you can do thi
 
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-Open--in--Gitpod-blue?logo=gitpod)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
 
-### ✅ 4a. Load `owner` table SQL export into `petclinic_owner` NoSQL table
+### ✅ 4a. Get your secure connect bundle
+We're going to need a secure connect bundle to talk to our Astra database with an external app. The bundle contains all of the information about where our cluster is up on the cloud and how to securly connect. After you launched GitPod you may have noticed a prompt asking you for your `service account credentials`.
+
+![Screen Shot 2021-04-07 at 9 00 19 AM](https://user-images.githubusercontent.com/23346205/113870516-ea270a80-977f-11eb-9231-a7b270e159d8.png)
+
+To get your credentials, go back to the Astra UI, click on your organization on the top left of the UI, then choose `Organization Settings`.
+
+![Screen Shot 2021-04-07 at 9 03 50 AM](https://user-images.githubusercontent.com/23346205/113871130-97018780-9780-11eb-8a0a-dbe27cb0ce64.png)
+
+From there:
+1. click `Security Settings`
+2. then the stacked ellipses next to your service account
+3. and finally click `Copy Credentials`
+
+![Screen Shot 2021-04-07 at 9 04 11 AM](https://user-images.githubusercontent.com/23346205/113871458-ee9ff300-9780-11eb-95e3-49754ddb2856.png)
+
+Paste the copied credentials into the prompt and hit **`ENTER`**. 
+
+Now, you will see a prompt asking for your **database ID**. 
+
+Go back to the Astra UI dashboard screen and:
+1. choose the `sql_to_nosql_db` database
+2. copy the DB ID using the copy widget
+
+![Screen Shot 2021-04-07 at 9 15 26 AM](https://user-images.githubusercontent.com/23346205/113872647-0e83e680-9782-11eb-9dc3-340633466a41.png)
+
+Finally, paste the DB ID into prompt in GitPod and hit **`ENTER`**. That's it, you should have your bundle.
+
+📗 **Expected output**
+![Screen Shot 2021-04-07 at 9 20 46 AM](https://user-images.githubusercontent.com/23346205/113873287-ada8de00-9782-11eb-879e-99f6682342dc.png)
+
+### ✅ 4b. Load `owner` table SQL export into `petclinic_owner` NoSQL table
 Ok, we're going to use DSBulk in this section to: 
 - connect to our Astra database using the **CLIENT ID** and **CLIENT SECRET** we created earlier in step 3 and the secure connect bundle `astra-creds.zip`
 - load data from the owner.csv file (exported from our relational DB `owner` table)
