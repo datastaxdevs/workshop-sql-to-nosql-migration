@@ -224,8 +224,21 @@ We've made this a little easier by constructing the command for you. Just run th
 ```
 
 📗 **Expected output**
+![Screen Shot 2021-04-07 at 8 29 07 AM](https://user-images.githubusercontent.com/23346205/113866689-9c100800-977b-11eb-95dc-b990d268ac9d.png)
 
-### ✅ 4b. Let's break this down a bit**
+Now, go back to `CQL Console` in your Astra UI and view the data from the `petclinic_owner` table.
+
+📘 **Command to execute**
+```SQL
+SELECT * FROM petclinic_owner;
+```
+
+📗 **Expected output**
+![Screen Shot 2021-04-07 at 8 37 54 AM](https://user-images.githubusercontent.com/23346205/113867461-91a23e00-977c-11eb-93b9-0da86fe7e2d7.png)
+
+
+
+### ✅ 4b. Let's break this down a bit
 So great, you just ran the DSBulk command and something happened, but lets explain this a bit more.
 
 First thing, here is the source CSV we are using generated from our SQL relational database for the `owner` table.
