@@ -37,7 +37,7 @@ That's it, you are done! Expect an email next week!
 
 `ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. **No credit card or any payment required**, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - **sufficient to run small production workloads**.
 
-### ✅ Step 1a. Register (if needed) and Sign In to Astra** : You can use your `Github`, `Google` accounts or register with an `email`.
+### ✅ Step 1a. Register (if needed) and Sign In to Astra : You can use your `Github`, `Google` accounts or register with an `email`.
 
 Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character
 
