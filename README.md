@@ -173,12 +173,14 @@ INSERT INTO petclinic_reference_lists(list_name, values)
 VALUES ('pet_type ', {'bird', 'cat', 'dog', 'lizard','hamster','snake'});
 ```
 
-- *Visualize structure*
+- *You should now have a set of petclinic tables*
 ```sql
-describe keyspace spring_petclinic;
+describe tables;
 ```
 
 📗 **Expected output**
+
+![Screen Shot 2021-04-07 at 9 29 25 AM](https://user-images.githubusercontent.com/23346205/113874468-d2ea1c00-9783-11eb-8f7f-e0438682311c.png)
 
 
 [🏠 Back to Table of Contents](#table-of-content)
