@@ -197,15 +197,10 @@ describe tables;
 
 [🏠 Back to Table of Contents](#table-of-content)
 
-## 3. Generate your Astra application token and service account
-In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database. We'll also create a service account to use the DevOps API.
+## 3. Generate your Astra application token
+In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database.
 
-### ✅ 3a. Create a service account
-An Astra service account lets you use the DevOps API (Hi Devops folks, this is for you). Why this matters for this workshop is it allows us to very easily pull down your secure connect bundle in an automated fashion using a script.
-
-First things first though, if you haven't already you need to go and create a service account in Astra to enable this. Follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-service-account.html#_create_your_service_account) to create your account.
-
-### ✅ 3b. Generate your application token
+### ✅ 3a. Generate your application token
 If you don't already have one follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html#_create_application_token) to generate your new token. **Don't forget to download it once created because you will not be able to see it again** without generating a new one.
 
 Once you **DOWNLOAD** the token if you view the contents they should look something like this:
