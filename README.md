@@ -270,7 +270,7 @@ We've made this a little easier by constructing the command for you. Just run th
 
 📘 **Command to execute**
 ```shell
-./dsbulk.sh
+bash dsbulk.sh
 ```
 
 📗 **Expected output**
