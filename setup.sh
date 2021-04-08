@@ -1,5 +1,5 @@
 echo "🚀     Go to https://astra.datastax.com and register or login
-Select your database from the left panel
+Select your database from the left panel from the Astra UI
 Click 'Settings' in the tab bar at the top.
 From this screen, choose 'Database Administrator' in the Role selection and click 'Create Token'
 What you need here is the third field, the 'Token'.  Copy that value and paste it here:"
@@ -8,11 +8,12 @@ What you need here is the third field, the 'Token'.  Copy that value and paste i
   echo "[default]" > ~/.astrarc
   echo "ASTRA_DB_ADMIN_TOKEN=${ASTRA_DB_ADMIN_TOKEN}" >> ~/.astrarc
 
-echo "🚀     What is the database ID you want to use?"
+echo "🚀     What is the cluster ID you want to use?
+Select your database from the left panel from the Astra UI
+Copy the Cluster ID using the copy widget to the right of the ID and paste it here:"
   read -r ASTRA_DB_ID
   export ASTRA_DB_ID="${ASTRA_DB_ID}"
   echo "ASTRA_DB_ID=${ASTRA_DB_ID}" >> ~/.astrarc
-
 
 echo "Getting database by ID..."
 DBbyID=$(curl -s --request GET \
