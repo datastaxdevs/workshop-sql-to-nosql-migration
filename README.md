@@ -218,28 +218,15 @@ In order to use DSBulk you need to download and install it. While you can do thi
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-Open--in--Gitpod-blue?logo=gitpod)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
 
 ### ✅ 4a. Get your secure connect bundle
-We're going to need a secure connect bundle to talk to our Astra database with an external app. The bundle contains all of the information about where our cluster is up on the cloud and how to securly connect. After you launched GitPod you may have noticed a prompt asking you for your `service account credentials`.
+We're going to need a secure connect bundle to talk to our Astra database with an external app. The bundle contains all of the information about where our cluster is up on the cloud and how to securly connect. After you launched GitPod you may have noticed a prompt asking you for your `Token`.
 
-![Screen Shot 2021-04-07 at 9 00 19 AM](https://user-images.githubusercontent.com/23346205/113870516-ea270a80-977f-11eb-9231-a7b270e159d8.png)
+![Screen Shot 2021-04-07 at 9 33 16 PM](https://user-images.githubusercontent.com/23346205/113955083-12971f00-97e9-11eb-8110-a5a7db1b9c83.png)
 
-To get your credentials, go back to the Astra UI, click on your organization on the top left of the UI, then choose `Organization Settings`.
-
-![Screen Shot 2021-04-07 at 9 03 50 AM](https://user-images.githubusercontent.com/23346205/113871130-97018780-9780-11eb-8a0a-dbe27cb0ce64.png)
-
-From there:
-1. click `Security Settings`
-2. then the stacked ellipses next to your service account
-3. and finally click `Copy Credentials`
-
-![Screen Shot 2021-04-07 at 9 04 11 AM](https://user-images.githubusercontent.com/23346205/113871458-ee9ff300-9780-11eb-95e3-49754ddb2856.png)
-
-Paste the copied credentials into the prompt and hit **`ENTER`**. 
-
-Now, you will see a prompt asking for your **database ID**. 
+Now, you will see a prompt asking for your **cluster ID**. 
 
 Go back to the Astra UI dashboard screen and:
 1. choose the `sql_to_nosql_db` database
-2. copy the DB ID using the copy widget
+2. copy the Cluster ID using the copy widget
 
 ![Screen Shot 2021-04-07 at 9 15 26 AM](https://user-images.githubusercontent.com/23346205/113872647-0e83e680-9782-11eb-9dc3-340633466a41.png)
 
