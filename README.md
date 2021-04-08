@@ -224,6 +224,8 @@ We're going to need a secure connect bundle to talk to our Astra database with a
 
 Now, you will see a prompt asking for your **cluster ID**. 
 
+![Screen Shot 2021-04-07 at 9 43 15 PM](https://user-images.githubusercontent.com/23346205/113955786-67876500-97ea-11eb-8121-6651d44cc4ad.png)
+
 Go back to the Astra UI dashboard screen and:
 1. choose the `sql_to_nosql_db` database
 2. copy the Cluster ID using the copy widget
@@ -233,7 +235,7 @@ Go back to the Astra UI dashboard screen and:
 Finally, paste the DB ID into prompt in GitPod and hit **`ENTER`**. That's it, you should have your bundle.
 
 📗 **Expected output**
-![Screen Shot 2021-04-07 at 9 20 46 AM](https://user-images.githubusercontent.com/23346205/113873287-ada8de00-9782-11eb-879e-99f6682342dc.png)
+![Screen Shot 2021-04-07 at 9 43 32 PM](https://user-images.githubusercontent.com/23346205/113955908-9d2c4e00-97ea-11eb-8d3c-a9ff44c8c35f.png)
 
 ### ✅ 4b. Load `owner` table SQL export into `petclinic_owner` NoSQL table
 Ok, we're going to use DSBulk in this section to: 
