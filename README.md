@@ -28,16 +28,16 @@ That's it, you are done! Expect an email next week!
 
 ## Table of content
 
-1. [Create your Astra Instance](#1-create-your-astra-instance)
+1. [Create your Astra DB Instance](#1-create-your-astra-db-instance)
 2. [Create petclinic NoSQL data model](#2-create-petclinic-nosql-data-model)
 3. [Generate your Astra application token and service account](#3-generate-your-astra-application-token-and-service-account)
-4. [Load data into Astra with DSBulk](#4-transform-and-load-data-with-dsbulk)
+4. [Load data into Astra DB with DSBulk](#4-transform-and-load-data-with-dsbulk)
 
-## 1. Create your Astra instance
+## 1. Create your Astra DB instance
 
 `ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. **No credit card or any payment required**, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - **sufficient to run small production workloads**.
 
-### ✅ Step 1a. Register (if needed) and Sign In to Astra : You can use your `Github`, `Google` accounts or register with an `email`.
+### ✅ Step 1a. Register (if needed) and Sign In to Astra DB : You can use your `Github`, `Google` accounts or register with an `email`.
 
 Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character
 
@@ -198,7 +198,7 @@ describe tables;
 [🏠 Back to Table of Contents](#table-of-content)
 
 ## 3. Generate your Astra application token
-In order for you to securely connect to your Cassandra database on Astra you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database.
+In order for you to securely connect to your Cassandra database on Astra DB you need to generate an application token. The cool thing once you generate this once you can then use it for any of your applications or tools to talk to your database.
 
 ### ✅ 3a. Generate your application token
 If you don't already have one follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html#_create_application_token) to generate your new token. **Don't forget to download it once created because you will not be able to see it again** without generating a new one.
@@ -218,7 +218,7 @@ In order to use DSBulk you need to download and install it. While you can do thi
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-Open--in--Gitpod-blue?logo=gitpod)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-sql-to-nosql-migration)
 
 ### ✅ 4a. Get your secure connect bundle
-We're going to need a secure connect bundle to talk to our Astra database with an external app. The bundle contains all of the information about where our cluster is up on the cloud and how to securly connect. After you launched GitPod you may have noticed a prompt asking you for your `Token`.
+We're going to need a secure connect bundle to talk to our Astra DB instance with an external app. The bundle contains all of the information about where our cluster is up on the cloud and how to securly connect. After you launched GitPod you may have noticed a prompt asking you for your `Token`.
 
 ![Screen Shot 2021-04-07 at 9 33 16 PM](https://user-images.githubusercontent.com/23346205/113955083-12971f00-97e9-11eb-8110-a5a7db1b9c83.png)
 
@@ -226,7 +226,7 @@ Now, you will see a prompt asking for your **cluster ID**.
 
 ![Screen Shot 2021-04-07 at 9 43 15 PM](https://user-images.githubusercontent.com/23346205/113955786-67876500-97ea-11eb-8121-6651d44cc4ad.png)
 
-Go back to the Astra UI dashboard screen and:
+Go back to the Astra DB UI dashboard screen and:
 1. choose the `sql_to_nosql_db` database
 2. copy the Cluster ID using the copy widget
 
@@ -239,7 +239,7 @@ Finally, paste the DB ID into prompt in GitPod and hit **`ENTER`**. That's it, y
 
 ### ✅ 4b. Load `owner` table SQL export into `petclinic_owner` NoSQL table
 Ok, we're going to use DSBulk in this section to: 
-- connect to our Astra database using the **CLIENT ID** and **CLIENT SECRET** we created earlier in step 3 and the secure connect bundle `astra-creds.zip`
+- connect to our Astra DB database using the **CLIENT ID** and **CLIENT SECRET** we created earlier in step 3 and the secure connect bundle `astra-creds.zip`
 - load data from the owner.csv file (exported from our relational DB `owner` table)
 - do this using a regular **INSERT** statement that maps values from our CSV file while **transforming** data with `UUID()`
 - use CSV file headers to identify what data each delimited column contains
@@ -260,7 +260,7 @@ bash dsbulk.sh
 📗 **Expected output**
 ![Screen Shot 2021-04-07 at 8 29 07 AM](https://user-images.githubusercontent.com/23346205/113866689-9c100800-977b-11eb-95dc-b990d268ac9d.png)
 
-Now, go back to `CQL Console` in your Astra UI and view the data from the `petclinic_owner` table.
+Now, go back to `CQL Console` in your Astra DB UI and view the data from the `petclinic_owner` table.
 
 📘 **Command to execute**
 ```SQL
@@ -298,6 +298,6 @@ where you see items `:first_name` and `:last_name`. These are bindings. They are
 
 ## THE END
 
-Whoohoo! Congrats on making it to the end. While this workshop just touches on this process from a pretty high level hopefully it gives you an idea of the kinds of things you need to do and where to start. To learn more about what you can do with DSBulk take a look at the docs [**HERE**](https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/dsbulkCmd.html). Also, don't forget that you can use Astra to experiment and play around with your data model for **FREE** well within the limits of the $25 monthly credit.
+Whoohoo! Congrats on making it to the end. While this workshop just touches on this process from a pretty high level hopefully it gives you an idea of the kinds of things you need to do and where to start. To learn more about what you can do with DSBulk take a look at the docs [**HERE**](https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/dsbulkCmd.html). Also, don't forget that you can use Astra DB to experiment and play around with your data model for **FREE** well within the limits of the $25 monthly credit.
 
 
