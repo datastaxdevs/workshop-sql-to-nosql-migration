@@ -209,6 +209,12 @@ Once you **DOWNLOAD** the token if you view the contents they should look someth
 "Client Id","Client Secret","Token","Role"
 "fdsfdslKFdLFdslDFFDjf","aaaaaaadsdadasdasdasdfsadfldsjfldjdsaldjasljdasljdsaljdasljdasljdlasjdal-FLflirFdfl.lfjdfdsljfjdl+fdlffkdsslfd","AstraCS:ppppdspfdsdslfjsdlfjdlj:540524888-04384039399999999999999999","Admin User"
 ```
+> **⚠️ Important**
+> ```
+> The instructor will show you on screen how to create a token 
+> but will have to destroy to token immediately for security reasons.
+> ```
+
 
 You'll need to use this in a moment to authenticate with DSBulk so **keep it handy**.
 
